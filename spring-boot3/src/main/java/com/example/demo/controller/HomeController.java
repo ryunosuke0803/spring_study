@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +15,9 @@ public class HomeController {
 	}
 	
 	@PostMapping("/confirm")
-		public String confirm(@RequestParam String message,Model model) {
-			model.addAttribute("message",message);
+		public String confirm(ModelMap modelmap,@RequestParam("name") String name,@RequestParam("pass") String pass) {
+			modelmap.addAttribute("name",name);
+			modelmap.addAttribute("pass",pass);
 			return "confirm";
 	}
 }
